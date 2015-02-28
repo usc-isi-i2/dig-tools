@@ -90,14 +90,8 @@ try:
     msg = None
     problems = []
     uri = "%s://%s:%s@%s/%s" % (SBPROTOCOL, SBUSER, SBPASSWORD, SBHOST, SBPATH)
-    print "uri: %s" % uri
-    cmd = ["/usr/bin/curl", "-k", "%s" % uri]
-    print cmd
-    try:
-        output = subprocess.check_output(cmd)
-    except Exception as e:
-        print e
-    print "result %s" % output
+    cmd = ["/usr/bin/curl", "-s", "-k", "%s" % uri]
+    output = subprocess.check_output(cmd)
     if same(json.loads(output), SBRESULT):
         pass
     else:

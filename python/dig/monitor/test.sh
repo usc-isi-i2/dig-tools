@@ -1,5 +1,5 @@
 #!/bin/sh
 
-C=`python eshealth.py`
+C=`python sentibank.py`
 
 echo $?
