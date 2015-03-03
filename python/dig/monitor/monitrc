@@ -264,7 +264,7 @@ check program eshealth with path "/nfs/isd/philpot/project/dig-tools/python/dig/
    if status != 0 then alert
 
 # 27 February 2015
-check program sentibank with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/sentibank.py"
+check program sentibankdt with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/sentibankdt.py"
    if status != 0 then alert
 
 # 27 February 2015
