@@ -1,5 +1,5 @@
 #!/bin/sh
 
-C=`python simbrokerdt.py`
+C=`python simbrokerkd.py`
 
 echo $?

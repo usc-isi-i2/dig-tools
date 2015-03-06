@@ -31,7 +31,6 @@ try:
     problems = []
     uri = "%s://%s:%s@%s/%s" % (ESDTPROTOCOL, ESDTUSER, ESDTPASSWORD, ESDTHOST, ESDTPATH)
     cmd = ["/usr/bin/curl", "-s", "-k", "%s" % uri]
-    print cmd
     output = subprocess.check_output(cmd)
     for line in output.split('\n'):
         fields = re.split(r'''\s+''', line)

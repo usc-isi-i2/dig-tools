@@ -20,9 +20,6 @@ SIMUSER='memex'
 SIMPASSWORD='digdig'
 VERBOSE=True
 
-import util
-
-@util.echo
 def correct(j):
     if j.get("ad_uri"):
         return True
@@ -35,7 +32,6 @@ try:
     problems = []
     uri = "%s://%s:%s@%s/%s" % (SIMPROTOCOL, SIMUSER, SIMPASSWORD, SIMHOST, SIMPATH)
     cmd = ["/usr/bin/curl", "-s", "-k", "%s" % uri]
-    print cmd
     output = subprocess.check_output(cmd)
     print output
     if correct(json.loads(output)):

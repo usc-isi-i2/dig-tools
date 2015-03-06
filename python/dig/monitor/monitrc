@@ -25,7 +25,8 @@ set daemon  60              # check services at 1-minute intervals
 ## omitted, Monit will use 'user' facility by default. If you want to log to 
 ## a standalone log file instead, specify the full path to the log file
 #
-# set logfile syslog facility log_daemon                       
+# set logfile syslog facility log_daemon
+set logfile /var/log/monit
 #
 #
 ## Set the location of the Monit lock file which stores the process id of the
@@ -116,7 +117,7 @@ set alert dig-isi@isi.edu
 ## Do not alert when Monit starts, stops or performs a user initiated action.
 ## This filter is recommended to avoid getting alerts for trivial cases.
 #
-# set alert your-name@your.domain not on { instance, action }
+set alert dig-isi@isi.edu not on { instance, action }
 #
 #
 ## Monit has an embedded HTTP interface which can be used to view status of 
@@ -260,17 +261,29 @@ set httpd port 2812 and
 #
 
 # 13 February 2015
-check program eshealth with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/eshealth.py"
+check program elasticsearchkd with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/elasticsearchkd.py"
+   if status != 0 then alert
+
+# 27 February 2015
+check program elasticsearchdt with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/elasticsearchdt.py"
    if status != 0 then alert
 
 # 27 February 2015
 check program sentibankdt with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/sentibankdt.py"
    if status != 0 then alert
 
-# 27 February 2015
-check program esdthealth with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/esdthealth.py"
+# 3 March 2015 by philpot
+check program sentibankaws with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/sentibankaws.py"
    if status != 0 then alert
 
 # 3 March 2015 by philpot
 check program simbrokerdt with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/simbrokerdt.py"
+   if status != 0 then alert
+
+# 3 March 2015 by philpot
+check program simbrokeraws with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/simbrokeraws.py"
+   if status != 0 then alert
+
+# 3 March 2015 by philpot
+check program simbrokerkd with path "/nfs/isd/philpot/project/dig-tools/python/dig/monitor/simbrokerkd.py"
    if status != 0 then alert
